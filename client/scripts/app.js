@@ -93,7 +93,9 @@ app.clearMessages = function() {
 
 app.renderMessage = function(message) {
   if (message.text !== undefined) {
-    message.text = message.text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    for (let key in message) {
+      message[key] = message[key].replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
     $('#chats').hide().append(
       `<a href="#" class="list-group-item list-group-item-action flex-column align-items-start px-5">
         <div class="d-flex w-100 justify-content-between">
